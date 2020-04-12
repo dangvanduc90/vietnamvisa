@@ -1,0 +1,209 @@
+.f-nav a.btn_apply {
+    top: 0px !important;
+}
+
+.tablewrapper{width: 100%; overflow-y: hidden; overflow-x: auto; }
+
+.top_footer {
+    width: 100%;
+    height: auto;
+    background-color: #2db45f;
+    float: left;
+}
+
+.embassy-form {
+    width: 60%;
+    position: relative;
+    margin: 0 auto;
+    font-size: 14px;
+}
+#embassy-form {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background: #fff;
+    border-radius: 20px;
+    vertical-align: top;
+    border: 1px #d4dde7 solid;
+}
+.buttonsearch {
+    position: absolute;
+    border: 0;
+    right: 13px;
+    top: 9px;
+    cursor: pointer;
+}
+#embassy-form .buttonsearch {
+    top: 12px; color: #2db45f;
+}
+#embassy-form .select2-container--default .select2-selection--single {
+    border: 0;
+    background: 0 0;
+    font-size: 13px;
+    color: #4a4a4a !important;
+    padding-left: 10px;
+    line-height: 38px;
+    font-weight: normal;
+}
+#embassy-form .select2-container .select2-selection--single, .choose-country .select2-container .select2-selection--single {
+    height: 40px;
+    outline: none !important;
+}
+span.select2-selection__rendered {
+    line-height: 36px!important;
+    font-size: 14px;
+    font-family: arial;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow { display: none; }
+.embassy-form p.desc {
+    max-width: 100%!important;
+    width: 100%!important;
+    padding: 10px 0;
+    font-style: italic;
+    font-size: 13px;
+    color: #000;
+    text-align: center;
+}
+
+.line-padding { padding: 40px 0; }
+
+.list-countries {margin-left: 0 !important;}
+
+.list-countries li, .list-tips li {
+    display: inline-block;
+    width: calc((100% - 20px)/5);
+    margin: 18px 0 0 !important;
+    font-size: 13px;
+}
+.list-tips li {
+    width: calc((100% - 20px)/3);
+}
+.list-countries li a, .list-tips li a {
+    color: #253d8c;
+}
+.list-countries li .flag, .list-tips .flag {
+    display: inline-block;
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.content_detail .page-desc {
+    font-size: 16px;
+    color: #333;
+    font-family: unset;
+    text-transform: none;
+    display: block;     padding-left: 0;
+}
+
+.text-center { text-align: center!important; }
+
+.content_detail .left_conent * {
+    font-family: "Roboto",Helvetica,Arial,sans-serif !important;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400 ;
+}
+
+.content_detail .left_conent p {
+    font-weight: 400 ;
+}
+.content_detail .left_conent h1, .content_detail .left_conent h1 *{
+	font-size:20px !important;
+	margin-bottom: 10px;
+    font-weight: 600 !important;
+}
+.content_detail .left_conent h2,.content_detail .left_conent h2 *{
+	font-size:18px !important;
+	font-weight: 600 !important;
+}
+.content_detail .left_conent h3, .content_detail .left_conent h3 *, .content_detail .left_conent strong {
+    font-weight: 600 !important;
+}
+
+.tour_visa .title h1 {
+    text-transform: uppercase;
+    color: #23568e;
+    font-size: 30px;
+    font-family: 'Montserrat-Bold';
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.page_pagination li a {
+    line-height: 40px !important;
+}
+
+.page_pagination .fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome !important;
+}
+.content_detail .left_item a {
+    font-size: 12px;
+    color: #58be7b;
+    font-weight: 600;
+}
+.content_detail .left_item span {
+    font-size: 12px;
+    color: #4a4a4a;
+    display: block;
+}
+
+.content_detail .left_item p {
+    font-size: 12px;
+    margin-bottom: 0px;
+    line-height: 30px;
+}
+.left_conent .item_news .right_item h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.content_detail .btn_viewmore { display: none !important; }
+
+.item_news{
+	height: 430px;
+    margin-bottom: 20px;
+}
+.left_conent .item_news .right_item p {
+    font-size: 16px;
+}
+
+.sidebar h4 {
+    font-family: 'Montserrat-Bold';
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.sidebar h4 .fa { margin-right: 10px; color: #58be7b; }
+
+@media(max-width: 480px) {
+    .left_item { display: none!important; }
+    .right_item {width: 100% !important;}
+}
+
+.right_conent { margin-bottom: 50px; }
+
+.box_dieukhoan { margin-top: 30px; font-size: 14px; }
+
+.box_form_aff { margin-top: 10px; }
+
+.form-select2 .select2 { margin-top: 15px !important; }
+
+.form-select2 span.select2-selection {
+    height: 40px !important;
+    border-radius: 20px;
+    padding-left: 12px;
+    outline: none;
+}
+.form-select2 .select2-selection__rendered {
+    color: #555 !important;
+    font-weight: normal;
+    font-size: 15px;
+}
+
+.input-error, .input-error span.select2-selection.input-error { border: 1px solid red !important; }

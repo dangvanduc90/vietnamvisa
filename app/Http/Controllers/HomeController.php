@@ -19,7 +19,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        echo 'index';
+        return view('front-end.index');
     }
 
   }
