@@ -12,7 +12,7 @@ class SuperAdminSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('users')->insert([
+        DB::table('admins')->insert([
             'name' => 'Admin',
             'email' => 'admin@admin.com',
             'role' => 'super-admin',
