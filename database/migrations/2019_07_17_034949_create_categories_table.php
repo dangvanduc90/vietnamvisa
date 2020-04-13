@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('slug')->unique();
             $table->string('name');
             $table->integer('type')->nullable();
+            $table->integer('type2')->nullable();
             $table->integer('cat_id')->nullable();
             $table->string('note')->nullable();
             $table->boolean('status');
