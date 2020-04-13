@@ -24,7 +24,7 @@ class WebinfoController extends Controller
         $obj  = Webinfo::where('name','thong-tin-chung')->first();
         $content = null;
         if($obj != null) $content = json_decode($obj->content);
-        return view('back-end.webinfo.info',['flag'=>$flag, 'page_name'=>$page_name, '_route'=>$_route, '_form'=>$_form, 'content'=>$content]);
+        return view('backend.webinfo.info',['flag'=>$flag, 'page_name'=>$page_name, '_route'=>$_route, '_form'=>$_form, 'content'=>$content]);
     }
 
     public function postCommonInfo(Request $request){
@@ -46,7 +46,7 @@ class WebinfoController extends Controller
         $obj  = Webinfo::where('name','header')->first();
         $content = null;
         if($obj != null) $content = json_decode($obj->content);
-        return view('back-end.webinfo.info',['flag'=>$flag, 'page_name'=>$page_name, '_route'=>$_route, '_form'=>$_form, 'content'=>$content]);
+        return view('backend.webinfo.info',['flag'=>$flag, 'page_name'=>$page_name, '_route'=>$_route, '_form'=>$_form, 'content'=>$content]);
     }
 
     public function postHeaderInfo(Request $request){
@@ -84,7 +84,7 @@ class WebinfoController extends Controller
     public function menu(Request $request){
         $page_name = "Thiết lập menu";
         $flag = 'menu';
-        return view('back-end.webinfo.menu',['flag'=>$flag, 'page_name'=>$page_name]);
+        return view('backend.webinfo.menu',['flag'=>$flag, 'page_name'=>$page_name]);
     }
 
 
@@ -96,7 +96,7 @@ class WebinfoController extends Controller
     public function index()
     {
         $objs = Webinfo::all();
-        return view('back-end.webinfo.list')->with('data',$objs);
+        return view('backend.webinfo.list')->with('data',$objs);
     }
 
     /**
@@ -106,7 +106,7 @@ class WebinfoController extends Controller
      */
     public function create()
     {
-        return view('back-end.webinfo.create');
+        return view('backend.webinfo.create');
     }
 
     /**
@@ -143,10 +143,10 @@ class WebinfoController extends Controller
     {
         $obj = Webinfo::find($id);
         if($obj == null){
-            Session::flash('error-webinfo', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('webinfo.index');  
+            Session::flash('error-webinfo', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('webinfo.index');
         }
-        return view('back-end.webinfo.edit',['obj'=>$obj]);
+        return view('backend.webinfo.edit',['obj'=>$obj]);
     }
 
     /**
@@ -161,8 +161,8 @@ class WebinfoController extends Controller
         //
         $obj = Webinfo::find($id);
         if($obj == null){
-            Session::flash('error-webinfo', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('webinfo.index');  
+            Session::flash('error-webinfo', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('webinfo.index');
         }
         $obj->update($request->all());
         Session::flash('success-webinfo', 'Thay đổi thông tin thành công.');
@@ -179,12 +179,12 @@ class WebinfoController extends Controller
     {
         $obj = Webinfo::find($id);
         if($obj == null){
-            Session::flash('error-webinfo', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('webinfo.index');  
+            Session::flash('error-webinfo', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('webinfo.index');
         }
         $obj->delete();
-        Session::flash('success-webinfo', 'Xóa thông tin thành công.');  
-        return redirect()->route('webinfo.index');  
+        Session::flash('success-webinfo', 'Xóa thông tin thành công.');
+        return redirect()->route('webinfo.index');
     }
 
     public function mutileUpdate(Request $request)
@@ -212,7 +212,7 @@ class WebinfoController extends Controller
                     $obj->delete();
                 }
             }
-        }       
+        }
         Session::flash('success-webinfo', 'Update đồng loạt thành công.');
         return redirect()->route('webinfo.index');
     }

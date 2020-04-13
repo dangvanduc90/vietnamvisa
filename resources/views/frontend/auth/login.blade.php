@@ -4,7 +4,7 @@
     <title></title>
 </head>
 <body>
-<form method="POST" action="{{ route('user.login') }}">
+<form method="POST" action="{{ route('post.user.login') }}">
     @csrf
     <input type="text" name="email" placeholder="email">
     <input type="password" name="password" placeholder="password">

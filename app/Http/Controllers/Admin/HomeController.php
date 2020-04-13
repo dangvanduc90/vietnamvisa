@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     //
     public function adminHome(){
-    	return view('back-end.pages.home');
+    	return view('backend.pages.home');
     }
 
     public function createSlug(Request $request)

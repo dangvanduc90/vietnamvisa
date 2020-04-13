@@ -20,7 +20,7 @@ class BannerController extends Controller
     {
         $objs = Banner::all();
         $pages = Page::all();
-        return view('back-end.banner.list',['pages'=>$pages, 'data'=>$objs]);
+        return view('backend.banner.list',['pages'=>$pages, 'data'=>$objs]);
     }
 
     /**
@@ -31,7 +31,7 @@ class BannerController extends Controller
     public function create()
     {
         $pages = Page::all();
-        return view('back-end.banner.create',['pages'=>$pages]);
+        return view('backend.banner.create',['pages'=>$pages]);
     }
 
     /**
@@ -70,11 +70,11 @@ class BannerController extends Controller
     {
         $obj = Banner::find($id);
         if($obj == null){
-            Session::flash('error-banner', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('banner.index');  
+            Session::flash('error-banner', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('banner.index');
         }
         $pages = Page::all();
-        return view('back-end.banner.edit',['obj'=>$obj, 'pages'=>$pages]);
+        return view('backend.banner.edit',['obj'=>$obj, 'pages'=>$pages]);
     }
 
     /**
@@ -88,8 +88,8 @@ class BannerController extends Controller
     {
         $obj = Banner::find($id);
         if($obj == null){
-            Session::flash('error-banner', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('banner.index');  
+            Session::flash('error-banner', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('banner.index');
         }
         $arr_data = $request->all();
         $obj->update($arr_data);
@@ -107,12 +107,12 @@ class BannerController extends Controller
     {
         $obj = Banner::find($id);
         if($obj == null){
-            Session::flash('error-banner', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('banner.index');  
+            Session::flash('error-banner', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('banner.index');
         }
         $obj->delete();
-        Session::flash('success-banner', 'Xóa thông tin thành công.');  
-        return redirect()->route('banner.index');  
+        Session::flash('success-banner', 'Xóa thông tin thành công.');
+        return redirect()->route('banner.index');
     }
 
     public function mutileUpdate(Request $request)
@@ -140,7 +140,7 @@ class BannerController extends Controller
                     $obj->delete();
                 }
             }
-        }       
+        }
         Session::flash('success-banner', 'Update đồng loạt thành công.');
         return redirect()->route('banner.index');
     }

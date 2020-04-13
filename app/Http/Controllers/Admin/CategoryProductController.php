@@ -19,7 +19,7 @@ class CategoryProductController extends Controller
     public function index()
     {
         $objs = Category::where('type2',1)->get();
-        return view('back-end.category-product.list')->with('data',$objs);
+        return view('backend.category-product.list')->with('data',$objs);
     }
 
     /**
@@ -30,7 +30,7 @@ class CategoryProductController extends Controller
     public function create()
     {
         $cats = Category::where('type2',1)->where('status',1)->get();
-        return view('back-end.category-product.create',['cats'=>$cats]);
+        return view('backend.category-product.create',['cats'=>$cats]);
     }
 
     /**
@@ -72,11 +72,11 @@ class CategoryProductController extends Controller
     {
         $obj = Category::find($id);
         if($obj == null){
-            Session::flash('error-category-product', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('category-product.index');  
+            Session::flash('error-category-product', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('category-product.index');
         }
         $cats = Category::where('type2',1)->where('status',1)->get();
-        return view('back-end.category-product.edit',['obj'=>$obj,'cats'=>$cats]);
+        return view('backend.category-product.edit',['obj'=>$obj,'cats'=>$cats]);
     }
 
     /**
@@ -90,8 +90,8 @@ class CategoryProductController extends Controller
     {
         $obj = Category::find($id);
         if($obj == null){
-            Session::flash('error-category-product', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('category-product.index');  
+            Session::flash('error-category-product', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('category-product.index');
         }
         $data = $request->all();
         $obj->update($request->all());
@@ -99,7 +99,7 @@ class CategoryProductController extends Controller
         $data['obj_id'] = $obj->id;
         $seo = $obj->seo();
         if($seo != null) $seo->update($data);
-        else Seo::create($data); 
+        else Seo::create($data);
         Session::flash('success-category-product', 'Thay đổi thông tin thành công.');
         return redirect(route('category-product.edit', ['id' => $id]));
     }
@@ -114,14 +114,14 @@ class CategoryProductController extends Controller
     {
         $obj = Category::find($id);
         if($obj == null){
-            Session::flash('error-category-product', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('category-product.index');  
+            Session::flash('error-category-product', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('category-product.index');
         }
         $seo = $obj->seo();
         if($seo != null) $seo->delete();
         $obj->delete();
-        Session::flash('success-category-product', 'Xóa thông tin thành công.');  
-        return redirect()->route('category-product.index');  
+        Session::flash('success-category-product', 'Xóa thông tin thành công.');
+        return redirect()->route('category-product.index');
     }
 
     public function mutileUpdate(Request $request)
@@ -151,7 +151,7 @@ class CategoryProductController extends Controller
                     $obj->delete();
                 }
             }
-        }       
+        }
         Session::flash('success-category-product', 'Update đồng loạt thành công.');
         return redirect()->route('category-product.index');
     }

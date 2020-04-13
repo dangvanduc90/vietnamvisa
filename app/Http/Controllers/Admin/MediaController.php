@@ -19,7 +19,7 @@ class MediaController extends Controller
     {
         $objs = Image::all();
         $pages = Page::where('status',1)->get();
-        return view('back-end.media.list',['pages'=>$pages, 'data'=>$objs]);
+        return view('backend.media.list',['pages'=>$pages, 'data'=>$objs]);
     }
 
     /**
@@ -30,7 +30,7 @@ class MediaController extends Controller
     public function create()
     {
         $pages = Page::where('status',1)->get();
-        return view('back-end.media.create',['pages'=>$pages]);
+        return view('backend.media.create',['pages'=>$pages]);
     }
 
     /**
@@ -71,11 +71,11 @@ class MediaController extends Controller
     {
         $obj = Image::find($id);
         if($obj == null){
-            Session::flash('error-media', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('media.index');  
+            Session::flash('error-media', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('media.index');
         }
         $pages = Page::where('status',1)->get();
-        return view('back-end.media.edit',['obj'=>$obj, 'pages'=>$pages]);
+        return view('backend.media.edit',['obj'=>$obj, 'pages'=>$pages]);
     }
 
     /**
@@ -89,8 +89,8 @@ class MediaController extends Controller
     {
         $obj = Image::find($id);
         if($obj == null){
-            Session::flash('error-media', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('media.index');  
+            Session::flash('error-media', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('media.index');
         }
         $arr_data = $request->all();
         if(isset($arr_data['page']))
@@ -110,12 +110,12 @@ class MediaController extends Controller
     {
         $obj = Image::find($id);
         if($obj == null){
-            Session::flash('error-media', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('media.index');  
+            Session::flash('error-media', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('media.index');
         }
         $obj->delete();
-        Session::flash('success-media', 'Xóa thông tin thành công.');  
-        return redirect()->route('media.index');  
+        Session::flash('success-media', 'Xóa thông tin thành công.');
+        return redirect()->route('media.index');
     }
 
     public function mutileUpdate(Request $request)
@@ -143,7 +143,7 @@ class MediaController extends Controller
                     $obj->delete();
                 }
             }
-        }       
+        }
         Session::flash('success-media', 'Update đồng loạt thành công.');
         return redirect()->route('media.index');
     }

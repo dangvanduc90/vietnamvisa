@@ -22,7 +22,7 @@ class AlbumController extends Controller
     public function index()
     {
         $objs = Album::all();
-        return view('back-end.album.list',['data'=>$objs]);
+        return view('backend.album.list',['data'=>$objs]);
     }
 
     /**
@@ -36,7 +36,7 @@ class AlbumController extends Controller
         $tags = array_merge($tags, Tag::all()->pluck('name')->toArray());
         $tags = array_merge($tags, Post::all()->pluck('name')->toArray());
         $tags = array_merge($tags, Category::all()->pluck('name')->toArray());
-        return view('back-end.album.create',['tags'=>$tags]);
+        return view('backend.album.create',['tags'=>$tags]);
     }
 
     /**
@@ -77,14 +77,14 @@ class AlbumController extends Controller
     {
         $obj = Album::find($id);
         if($obj == null){
-            Session::flash('error-album', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('album.index');  
+            Session::flash('error-album', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('album.index');
         }
         $tags = [];
         $tags = array_merge($tags, Tag::all()->pluck('name')->toArray());
         $tags = array_merge($tags, Post::all()->pluck('name')->toArray());
         $tags = array_merge($tags, Category::all()->pluck('name')->toArray());
-        return view('back-end.album.edit',['obj'=>$obj, 'tags'=> $tags]);
+        return view('backend.album.edit',['obj'=>$obj, 'tags'=> $tags]);
     }
 
     /**
@@ -98,15 +98,15 @@ class AlbumController extends Controller
     {
         $obj = Album::find($id);
         if($obj == null){
-            Session::flash('error-album', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('album.index');  
+            Session::flash('error-album', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('album.index');
         }
         $arr_data = $request->all();
         if(isset($arr_data['tags']))
             $arr_data['tags'] = implode(";",  $arr_data['tags']);
         $arr_data['created_by'] = \Auth::user()->id;
         $obj->update($arr_data);
-        Session::flash('success-album', 'Cập nhật album thành công.'); 
+        Session::flash('success-album', 'Cập nhật album thành công.');
         return redirect()->route('album.edit',['id'=>$id]);
     }
 
@@ -120,12 +120,12 @@ class AlbumController extends Controller
     {
         $obj = Album::find($id);
         if($obj == null){
-            Session::flash('error-album', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('album.index');  
+            Session::flash('error-album', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('album.index');
         }
         $obj->delete();
-        Session::flash('success-album', 'Xóa album thành công.');  
-        return redirect()->route('album.index');  
+        Session::flash('success-album', 'Xóa album thành công.');
+        return redirect()->route('album.index');
     }
 
     public function getImage(Request $request)
@@ -142,7 +142,7 @@ class AlbumController extends Controller
         foreach ($files as $key => $value) {
             $res[config('admin.base_url').'FILES/source/album/'.$value] = $value;
         }
-        return view('back-end.partials.album-main-image',['files'=>$res, 'album'=>$album]);
+        return view('backend.partials.album-main-image',['files'=>$res, 'album'=>$album]);
     }
 
     public function mutileUpdate(Request $request)
@@ -170,7 +170,7 @@ class AlbumController extends Controller
                     $obj->delete();
                 }
             }
-        }       
+        }
         Session::flash('success-album', 'Update đồng loạt thành công.');
         return redirect()->route('album.index');
     }

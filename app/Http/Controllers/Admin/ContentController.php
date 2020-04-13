@@ -19,7 +19,7 @@ class ContentController extends Controller
     public function index()
     {
         $objs = Content::all();
-        return view('back-end.content.list',['data'=>$objs]);
+        return view('backend.content.list',['data'=>$objs]);
     }
 
     /**
@@ -30,13 +30,13 @@ class ContentController extends Controller
     public function create()
     {
         $sections = Section::where('status',1)->get();
-        return view('back-end.content.create',['sections'=>$sections]);
+        return view('backend.content.create',['sections'=>$sections]);
     }
 
     public function createHTML($section){
         $contents = $section->contents()->where('status',1)->orderby('pos')->get();
         $html = "";
-       
+
         if($section->type == 1){
             $html .='<div class="row title-text">
                         <div class="col col-title-text col-sm-12 large-12">
@@ -63,7 +63,7 @@ class ContentController extends Controller
                             <div class="icon-box-img" style="width: 52px">
                                 <div class="icon">
                                     <div class="icon-inner">
-                                        <img width="200" height="200" src="'.$content->image.'" class="attachment-medium size-medium" sizes="(max-width: 200px) 100vw, 200px"> 
+                                        <img width="200" height="200" src="'.$content->image.'" class="attachment-medium size-medium" sizes="(max-width: 200px) 100vw, 200px">
                                     </div>
                                 </div>
                             </div>
@@ -88,12 +88,12 @@ class ContentController extends Controller
                                 </div>
                             </div>
                             <div class="row">';
-                                
+
             $i = 0;
             $html .='<div class="col left col-md-4 col-sm-12 col-lg-4">
                         <div class="col-inner">';
             foreach($contents as $content){
-               
+
                 if($i % 2 == 0){
                     $html .='<div class="technology-item wordpress">
                                 <p class="manhphuc-title-cn"><i class="fa fa-wordpress" aria-hidden="true"></i>'.$content->name.'</p>
@@ -116,7 +116,7 @@ class ContentController extends Controller
             $html .='<div class="col right col-md-4 col-sm-12 col-lg-4">
                         <div class="col-inner">';
             foreach($contents as $content){
-               
+
                 if($i % 2 != 0){
                     $html .='<div class="technology-item wordpress">
                                 <p class="manhphuc-title-cn"><i class="fa fa-wordpress" aria-hidden="true"></i>'.$content->name.'</p>
@@ -142,7 +142,7 @@ class ContentController extends Controller
                 if ($i == 0) $cla = 'active';
                 else $cla = '';
                 $html .='<div class="col-md-24 no-padding tab-item '.$cla.'">
-                            <div href="#tab'.$content->id.'" class="title-item effect-button-left-right" data-toggle="tab"> 
+                            <div href="#tab'.$content->id.'" class="title-item effect-button-left-right" data-toggle="tab">
                             '.$content->name.'
                             </div>
                             <p></p>
@@ -169,7 +169,7 @@ class ContentController extends Controller
                 $i++;
             }
             $html .= "</div>";
-            $html .= "</div></div></div></section>";  
+            $html .= "</div></div></div></section>";
         }
 
         if($section->type == 4){
@@ -185,7 +185,7 @@ class ContentController extends Controller
                             </div>
                             <div class="row gap-y text-center text-md-left">';
             foreach($contents as $content){
-                $html .='<a class="col-md-3 col-6 py-4 rounded shadow-hover text-center aos-init aos-animate" data-aos="fade-right" 
+                $html .='<a class="col-md-3 col-6 py-4 rounded shadow-hover text-center aos-init aos-animate" data-aos="fade-right"
                         href="'.$content->link.'" title="'.$content->name.'">
                             <div class="icon-shape mb-4">
                                 <img class="shape-xl" src="'.$content->image.'" alt="'.$content->name.'">
@@ -210,7 +210,7 @@ class ContentController extends Controller
                                 <ul class="cmt-slider">';
             foreach($contents as $content){
                 $html .='<div class="customers-say clearfix">
-                            <img width="90" height="90" src="'.$content->image.'" class="attachment-full size-full wp-post-image" alt="tuan-bui-thiet-ke-web">  
+                            <img width="90" height="90" src="'.$content->image.'" class="attachment-full size-full wp-post-image" alt="tuan-bui-thiet-ke-web">
                             <div class="name">
                                 '.$content->name.'
                             </div>
@@ -252,7 +252,7 @@ class ContentController extends Controller
                                                '.$content->name.'
                                 </a>
                                 <div class="post-meta">
-                                   
+
                                 </div>
                                 <div class="post-excerpt">'.$content->des_f.'</div>
                             </div>
@@ -360,7 +360,7 @@ class ContentController extends Controller
         $arr_data['created_by'] = \Auth::user()->id;
         Content::create($arr_data);
         $this->createHTML($section);
-       
+
         Session::flash('success-content', 'Tạo mới content thành công.');
         return redirect(route('content.create'));
     }
@@ -386,11 +386,11 @@ class ContentController extends Controller
     {
         $obj = Content::find($id);
         if($obj == null){
-            Session::flash('error-content', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('content.index');  
+            Session::flash('error-content', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('content.index');
         }
         $sections = Section::where('status',1)->get();
-        return view('back-end.content.edit',['obj'=>$obj, 'sections'=>$sections]);
+        return view('backend.content.edit',['obj'=>$obj, 'sections'=>$sections]);
     }
 
     /**
@@ -404,8 +404,8 @@ class ContentController extends Controller
     {
         $obj = Content::find($id);
         if($obj == null){
-            Session::flash('error-content', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('content.index');  
+            Session::flash('error-content', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('content.index');
         }
         $arr_data = $request->all();
         $arr_data['created_by'] = \Auth::user()->id;
@@ -427,12 +427,12 @@ class ContentController extends Controller
     {
         $obj = Content::find($id);
         if($obj == null){
-            Session::flash('error-content', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('content.index');  
+            Session::flash('error-content', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('content.index');
         }
         $obj->delete();
-        Session::flash('success-content', 'Xóa thông tin thành công.');  
-        return redirect()->route('content.index');  
+        Session::flash('success-content', 'Xóa thông tin thành công.');
+        return redirect()->route('content.index');
     }
 
     public function mutileUpdate(Request $request)
@@ -460,7 +460,7 @@ class ContentController extends Controller
                     $obj->delete();
                 }
             }
-        }       
+        }
         Session::flash('success-content', 'Update đồng loạt thành công.');
         return redirect()->route('content.index');
     }

@@ -17,7 +17,7 @@ class ContactController extends Controller
     public function index()
     {
         $objs = Contact::orderby('created_at','desc')->get();
-        return view('back-end.contact.list')->with('data',$objs);
+        return view('backend.contact.list')->with('data',$objs);
     }
 
     /**
@@ -62,10 +62,10 @@ class ContactController extends Controller
     {
         $obj = Contact::find($id);
         if($obj == null){
-            Session::flash('error-contact', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('contact.index');  
+            Session::flash('error-contact', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('contact.index');
         }
-        return view('back-end.contact.edit',['obj'=>$obj]);
+        return view('backend.contact.edit',['obj'=>$obj]);
     }
 
     /**
@@ -79,8 +79,8 @@ class ContactController extends Controller
     {
         $obj = Contact::find($id);
         if($obj == null){
-            Session::flash('error-contact', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('contact.index');  
+            Session::flash('error-contact', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('contact.index');
         }
         $obj->update($request->all());
         Session::flash('success-contact', 'Thay đổi thông tin thành công.');
@@ -97,12 +97,12 @@ class ContactController extends Controller
     {
         $obj = Contact::find($id);
         if($obj == null){
-            Session::flash('error-contact', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('contact.index');  
+            Session::flash('error-contact', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('contact.index');
         }
         $obj->delete();
-        Session::flash('success-contact', 'Xóa thông tin thành công.');  
-        return redirect()->route('contact.index');  
+        Session::flash('success-contact', 'Xóa thông tin thành công.');
+        return redirect()->route('contact.index');
     }
 
     public function mutileUpdate(Request $request)
@@ -130,7 +130,7 @@ class ContactController extends Controller
                     $obj->delete();
                 }
             }
-        }       
+        }
         Session::flash('success-contact', 'Update đồng loạt thành công.');
         return redirect()->route('contact.index');
     }

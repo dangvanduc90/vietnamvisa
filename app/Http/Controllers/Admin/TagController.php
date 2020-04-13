@@ -18,7 +18,7 @@ class TagController extends Controller
     public function index()
     {
         $objs = Tag::all();
-        return view('back-end.tag.list')->with('data',$objs);
+        return view('backend.tag.list')->with('data',$objs);
     }
 
     /**
@@ -28,7 +28,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('back-end.tag.create');
+        return view('backend.tag.create');
     }
 
     /**
@@ -65,10 +65,10 @@ class TagController extends Controller
     {
         $obj = Tag::find($id);
         if($obj == null){
-            Session::flash('error-tag', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('tag.index');  
+            Session::flash('error-tag', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('tag.index');
         }
-        return view('back-end.tag.edit',['obj'=>$obj]);
+        return view('backend.tag.edit',['obj'=>$obj]);
     }
 
     /**
@@ -82,8 +82,8 @@ class TagController extends Controller
     {
         $obj = Tag::find($id);
         if($obj == null){
-            Session::flash('error-tag', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('tag.index');  
+            Session::flash('error-tag', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('tag.index');
         }
         $obj->update($request->all());
         Session::flash('success-tag', 'Thay đổi thông tin thành công.');
@@ -100,12 +100,12 @@ class TagController extends Controller
     {
         $obj = Tag::find($id);
         if($obj == null){
-            Session::flash('error-tag', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('tag.index');  
+            Session::flash('error-tag', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('tag.index');
         }
         $obj->delete();
-        Session::flash('success-tag', 'Xóa thông tin thành công.');  
-        return redirect()->route('tag.index');  
+        Session::flash('success-tag', 'Xóa thông tin thành công.');
+        return redirect()->route('tag.index');
     }
 
     public function mutileUpdate(Request $request)
@@ -133,7 +133,7 @@ class TagController extends Controller
                     $obj->delete();
                 }
             }
-        }       
+        }
         Session::flash('success-tag', 'Update đồng loạt thành công.');
         return redirect()->route('tag.index');
     }

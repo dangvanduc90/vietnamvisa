@@ -15,8 +15,13 @@ class CreateSeosTable extends Migration
     {
         Schema::create('seos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('content');
-            $table->boolean('status');
+            $table->text('content')->nullable();
+            $table->boolean('status')->default(true);
+            $table->integer('type')->nullable();
+            $table->string('seo_title')->nullable();
+            $table->string('seo_key')->nullable();
+            $table->integer('obj_id')->nullable();
+            $table->text('seo_des')->nullable();
             $table->timestamps();
         });
     }

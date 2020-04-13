@@ -19,7 +19,7 @@ class PageController extends Controller
     public function index()
     {
         $objs = Page::all();
-        return view('back-end.page.list')->with('data',$objs);
+        return view('backend.page.list')->with('data',$objs);
     }
 
     /**
@@ -29,7 +29,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        return view('back-end.page.create');
+        return view('backend.page.create');
     }
 
     /**
@@ -70,10 +70,10 @@ class PageController extends Controller
     {
         $obj = Page::find($id);
         if($obj == null){
-            Session::flash('error-page', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('page.index');  
+            Session::flash('error-page', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('page.index');
         }
-        return view('back-end.page.edit',['obj'=>$obj]);
+        return view('backend.page.edit',['obj'=>$obj]);
     }
 
     /**
@@ -87,8 +87,8 @@ class PageController extends Controller
     {
         $obj = Page::find($id);
         if($obj == null){
-            Session::flash('error-page', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('page.index');  
+            Session::flash('error-page', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('page.index');
         }
         $data = $request->all();
         $obj->update($data);
@@ -96,7 +96,7 @@ class PageController extends Controller
         $data['obj_id'] = $obj->id;
         $seo = $obj->seo();
         if($seo != null) $seo->update($data);
-        else Seo::create($data); 
+        else Seo::create($data);
         Session::flash('success-page', 'Thay đổi thông tin thành công.');
         return redirect(route('page.edit', ['id' => $id]));
     }
@@ -111,14 +111,14 @@ class PageController extends Controller
     {
         $obj = Page::find($id);
         if($obj == null){
-            Session::flash('error-page', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('page.index');  
+            Session::flash('error-page', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('page.index');
         }
         $seo = $obj->seo();
         if($seo != null) $seo->delete();
         $obj->delete();
-        Session::flash('success-page', 'Xóa thông tin thành công.');  
-        return redirect()->route('page.index');  
+        Session::flash('success-page', 'Xóa thông tin thành công.');
+        return redirect()->route('page.index');
     }
 
     public function mutileUpdate(Request $request)
@@ -144,11 +144,11 @@ class PageController extends Controller
                 if($obj != null)
                 {
                     $seo = $obj->seo();
-                    if($seo != null) $seo->delete();    
+                    if($seo != null) $seo->delete();
                     $obj->delete();
                 }
             }
-        }       
+        }
         Session::flash('success-page', 'Update đồng loạt thành công.');
         return redirect()->route('page.index');
     }

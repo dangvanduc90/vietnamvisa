@@ -21,7 +21,7 @@ class PostController extends Controller
     public function index()
     {
         $objs = Post::join('categories', 'categories.id', '=', 'posts.cat_id')->where('categories.type2', null)->select('posts.*')->get();
-        return view('back-end.post.list',['data'=>$objs]);
+        return view('backend.post.list',['data'=>$objs]);
     }
 
     /**
@@ -32,7 +32,7 @@ class PostController extends Controller
     public function create()
     {
         $cat = Category::where('type2', null)->where('status',1)->orderby('name')->get();
-        return view('back-end.post.create',['cats'=>$cat]);
+        return view('backend.post.create',['cats'=>$cat]);
     }
 
     /**
@@ -73,11 +73,11 @@ class PostController extends Controller
     {
         $obj = Post::find($id);
         if($obj == null){
-            Session::flash('error-post', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('post.index');  
+            Session::flash('error-post', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('post.index');
         }
         $cat = Category::where('type2', null)->where('status',1)->orderby('name')->get();
-        return view('back-end.post.edit',['obj'=>$obj,'cats'=>$cat]);
+        return view('backend.post.edit',['obj'=>$obj,'cats'=>$cat]);
 
     }
 
@@ -92,8 +92,8 @@ class PostController extends Controller
     {
         $obj = Post::find($id);
         if($obj == null){
-            Session::flash('error-post', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('post.index');  
+            Session::flash('error-post', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('post.index');
         }
         $data = $request->all();
         $obj->update($request->all());
@@ -101,8 +101,8 @@ class PostController extends Controller
         $data['obj_id'] = $obj->id;
         $seo = $obj->seo();
         if($seo != null) $seo->update($data);
-        else Seo::create($data); 
-        Session::flash('success-post', 'Cập nhật bài viết thành công.'); 
+        else Seo::create($data);
+        Session::flash('success-post', 'Cập nhật bài viết thành công.');
         return redirect()->route('post.edit',['id'=>$id]);
     }
 
@@ -116,14 +116,14 @@ class PostController extends Controller
     {
         $obj = Post::find($id);
         if($obj == null){
-            Session::flash('error-post', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('post.index');  
+            Session::flash('error-post', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('post.index');
         }
         $seo = $obj->seo();
         if($seo != null) $seo->delete();
         $obj->delete();
-        Session::flash('success-post', 'Xóa bài viết thành công.');  
-        return redirect()->route('post.index');  
+        Session::flash('success-post', 'Xóa bài viết thành công.');
+        return redirect()->route('post.index');
     }
 
     public function mutileUpdate(Request $request)
@@ -153,7 +153,7 @@ class PostController extends Controller
                     $obj->delete();
                 }
             }
-        }       
+        }
         Session::flash('success-post', 'Update đồng loạt thành công.');
         return redirect()->route('post.index');
     }

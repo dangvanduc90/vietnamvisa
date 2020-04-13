@@ -1,112 +1,121 @@
 <?php
 
-Route::middleware(['auth'])->prefix('admin')->group(function () {
-    Route::prefix('thiet-lap')->group(function () {
-    	Route::get('/thong-tin-chung', 'Admin\WebinfoController@commonInfo')->name('thong-tin-chung');
-    	Route::post('/thong-tin-chung/thay-doi', 'Admin\WebinfoController@postCommonInfo')->name('thong-tin-chung.post');
+Route::namespace('Admin')->group(function () {
+//    auth admin
+    Route::get('/login', 'LoginController@showLoginForm')->name('admin.login');
+    Route::post('/login', 'LoginController@login')->name('post.admin.login');
 
-    	Route::get('/header', 'Admin\WebinfoController@headerInfo')->name('header');
-    	Route::post('/header/thay-doi', 'Admin\WebinfoController@postHeaderInfo')->name('header.post');
+    Route::middleware('auth:admin')->group(function () {
+        Route::post('/logout', 'LoginController@logout')->name('admin.logout');
+        Route::group(['middleware' => ['auth:admin']], function () {
+            Route::get('/home', 'HomeController@index');
+        });
 
-    	Route::get('/menu', 'Admin\WebinfoController@menu')->name('menu');
+        Route::prefix('thiet-lap')->group(function () {
+            Route::get('/thong-tin-chung', 'WebinfoController@commonInfo')->name('thong-tin-chung');
+            Route::post('/thong-tin-chung/thay-doi', 'WebinfoController@postCommonInfo')->name('thong-tin-chung.post');
+
+            Route::get('/header', 'WebinfoController@headerInfo')->name('header');
+            Route::post('/header/thay-doi', 'WebinfoController@postHeaderInfo')->name('header.post');
+
+            Route::get('/menu', 'WebinfoController@menu')->name('menu');
+        });
+        Route::get('/', 'WebinfoController@commonInfo')->name('admin.home');
+
+        //Content
+        Route::resource('content', 'ContentController');
+        Route::post('/mutile-update/content', 'ContentController@mutileUpdate')
+            ->name('mutileUpdate.content');
+
+        //Section
+        Route::resource('section', 'SectionController');
+        Route::post('/mutile-update/section', 'SectionController@mutileUpdate')
+            ->name('mutileUpdate.section');
+
+        Route::resource('contact', 'ContactController');
+        Route::post('/mutile-update/contact', 'ContactController@mutileUpdate')
+            ->name('mutileUpdate.contact');
+
+        //Post
+        Route::resource('post', 'PostController');
+        Route::post('/mutile-update/post', 'PostController@mutileUpdate')
+            ->name('mutileUpdate.post');
+        Route::resource('product', 'ProductController');
+        Route::post('/mutile-update/product', 'ProductController@mutileUpdate')
+            ->name('mutileUpdate.product');
+
+        //Album
+        Route::resource('album', 'AlbumController');
+        Route::post('/mutile-update/album', 'AlbumController@mutileUpdate')
+            ->name('mutileUpdate.album');
+        Route::get('/get-image/autocomplete', 'AlbumController@getImage')
+            ->name('get-image');
+
+        //Category
+        Route::resource('category', 'CategoryController');
+        Route::post('/mutile-update/category', 'CategoryController@mutileUpdate')
+            ->name('mutileUpdate.category');
+
+        Route::resource('category-product', 'CategoryProductController');
+        Route::post('/mutile-update/category-product', 'CategoryProductController@mutileUpdate')
+            ->name('mutileUpdate.category-product');
+
+        //Tag
+        Route::resource('tag', 'TagController');
+        Route::post('/mutile-update/tag', 'TagController@mutileUpdate')
+            ->name('mutileUpdate.tag');
+
+        //Icon
+        Route::resource('icon', 'IconController');
+        Route::post('/mutile-update/icon', 'IconController@mutileUpdate')
+            ->name('mutileUpdate.icon');
+
+        //Seo
+        Route::resource('seo', 'SeoController');
+        Route::post('/mutile-update/seo', 'SeoController@mutileUpdate')
+            ->name('mutileUpdate.seo');
+
+        //Media
+        Route::resource('media', 'MediaController');
+        Route::post('/mutile-update/media', 'MediaController@mutileUpdate')
+            ->name('mutileUpdate.media');
+
+        //Home
+        Route::get('/home', 'HomeController@adminHome')->name('admin.home');
+
+        //User
+        Route::resource('user', 'UserController');
+        Route::get('/profile', 'UserController@getProfile')->name('profile.get');
+        Route::post('/profile', 'UserController@postProfile')->name('profile.post');
+        Route::post('/mutile-update/user', 'UserController@mutileUpdate')
+            ->name('mutileUpdate.user');
+
+        //Webinfo
+        Route::resource('webinfo', 'WebinfoController');
+        Route::post('/mutile-update/webinfo', 'WebinfoController@mutileUpdate')
+            ->name('mutileUpdate.webinfo');
+
+        //Page
+        Route::resource('page', 'PageController');
+        Route::post('/mutile-update/page', 'PageController@mutileUpdate')
+            ->name('mutileUpdate.page');
+
+        //Banner
+        Route::resource('banner', 'BannerController');
+        Route::post('/mutile-update/banner', 'BannerController@mutileUpdate')
+            ->name('mutileUpdate.banner');
+        //Slug
+        Route::get('/create-slug', 'HomeController@createSlug')
+            ->name('create-slug');
     });
-    Route::get('/', 'Admin\WebinfoController@commonInfo');
 
-	//Content
-	Route::resource('content', 'Admin\ContentController');
-	Route::post('/mutile-update/content', 'Admin\ContentController@mutileUpdate')
-	->name('mutileUpdate.content');
-
-	//Section
-	Route::resource('section', 'Admin\SectionController');
-	Route::post('/mutile-update/section', 'Admin\SectionController@mutileUpdate')
-	->name('mutileUpdate.section');
-
-	Route::resource('contact', 'Admin\ContactController');
-	Route::post('/mutile-update/contact', 'Admin\ContactController@mutileUpdate')
-	->name('mutileUpdate.contact');
-
-	//Post
-	Route::resource('post', 'Admin\PostController');
-	Route::post('/mutile-update/post', 'Admin\PostController@mutileUpdate')
-	->name('mutileUpdate.post');
-	Route::resource('product', 'Admin\ProductController');
-	Route::post('/mutile-update/product', 'Admin\ProductController@mutileUpdate')
-	->name('mutileUpdate.product');
-
-	//Album
-	Route::resource('album', 'Admin\AlbumController');
-	Route::post('/mutile-update/album', 'Admin\AlbumController@mutileUpdate')
-	->name('mutileUpdate.album');
-	Route::get('/get-image/autocomplete', 'Admin\AlbumController@getImage')
-	->name('get-image');
-
-	//Category
-	Route::resource('category', 'Admin\CategoryController');
-	Route::post('/mutile-update/category', 'Admin\CategoryController@mutileUpdate')
-	->name('mutileUpdate.category');
-
-	Route::resource('category-product', 'Admin\CategoryProductController');
-	Route::post('/mutile-update/category-product', 'Admin\CategoryProductController@mutileUpdate')
-	->name('mutileUpdate.category-product');
-
-	//Tag
-	Route::resource('tag', 'Admin\TagController');
-	Route::post('/mutile-update/tag', 'Admin\TagController@mutileUpdate')
-	->name('mutileUpdate.tag');
-
-	//Icon
-	Route::resource('icon', 'Admin\IconController');
-	Route::post('/mutile-update/icon', 'Admin\IconController@mutileUpdate')
-	->name('mutileUpdate.icon');
-
-	//Seo
-	Route::resource('seo', 'Admin\SeoController');
-	Route::post('/mutile-update/seo', 'Admin\SeoController@mutileUpdate')
-	->name('mutileUpdate.seo');
-
-	//Media
-	Route::resource('media', 'Admin\MediaController');
-	Route::post('/mutile-update/media', 'Admin\MediaController@mutileUpdate')
-	->name('mutileUpdate.media');
-
-	//Home
-	Route::get('/home', 'Admin\HomeController@adminHome')->name('admin.home');
-
-	//User
-	Route::resource('user', 'Admin\UserController');
-	Route::get('/profile', 'Admin\UserController@getProfile')->name('profile.get');
-	Route::post('/profile', 'Admin\UserController@postProfile')->name('profile.post');
-	Route::post('/mutile-update/user', 'Admin\UserController@mutileUpdate')
-	->name('mutileUpdate.user');
-
-	//Webinfo
-	Route::resource('webinfo', 'Admin\WebinfoController');
-	Route::post('/mutile-update/webinfo', 'Admin\WebinfoController@mutileUpdate')
-	->name('mutileUpdate.webinfo');
-
-	//Page
-	Route::resource('page', 'Admin\PageController');
-	Route::post('/mutile-update/page', 'Admin\PageController@mutileUpdate')
-	->name('mutileUpdate.page');
-
-	//Banner
-	Route::resource('banner', 'Admin\BannerController');
-	Route::post('/mutile-update/banner', 'Admin\BannerController@mutileUpdate')
-	->name('mutileUpdate.banner');
-
-	//Logs
-	Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')
-	->name('admin.logs');
-
-	//Files
-	Route::get('/files', function () {
-    	return view('back-end.pages.files');
-	})->name('admin.files');
-
-	//Slug
-	Route::get('/create-slug', 'Admin\HomeController@createSlug')
-	->name('create-slug');
 });
 
-?>
+//Logs
+Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')
+    ->name('admin.logs');
+
+//Files
+Route::get('/files', function () {
+    return view('backend.pages.files');
+})->name('admin.files');

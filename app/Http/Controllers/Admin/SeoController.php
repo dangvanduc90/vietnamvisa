@@ -18,7 +18,7 @@ class SeoController extends Controller
     public function index()
     {
         $objs = Seo::all();
-        return view('back-end.seo.list',['data'=>$objs]);
+        return view('backend.seo.list',['data'=>$objs]);
     }
 
     /**
@@ -28,7 +28,7 @@ class SeoController extends Controller
      */
     public function create()
     {
-        return view('back-end.seo.create');
+        return view('backend.seo.create');
     }
 
     /**
@@ -67,10 +67,10 @@ class SeoController extends Controller
     {
         $obj = Seo::find($id);
         if($obj == null){
-            Session::flash('error-seo', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('seo.index');  
+            Session::flash('error-seo', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('seo.index');
         }
-        return view('back-end.seo.edit',['obj'=>$obj]);
+        return view('backend.seo.edit',['obj'=>$obj]);
     }
 
     /**
@@ -84,8 +84,8 @@ class SeoController extends Controller
     {
         $obj = Seo::find($id);
         if($obj == null){
-            Session::flash('error-seo', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('seo.index');  
+            Session::flash('error-seo', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('seo.index');
         }
         $arr_data = $request->all();
         $obj->update($arr_data);
@@ -103,12 +103,12 @@ class SeoController extends Controller
     {
         $obj = Seo::find($id);
         if($obj == null){
-            Session::flash('error-seo', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('seo.index');  
+            Session::flash('error-seo', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('seo.index');
         }
         $obj->delete();
-        Session::flash('success-seo', 'Xóa thông tin thành công.');  
-        return redirect()->route('seo.index');  
+        Session::flash('success-seo', 'Xóa thông tin thành công.');
+        return redirect()->route('seo.index');
     }
 
     public function mutileUpdate(Request $request)
@@ -136,7 +136,7 @@ class SeoController extends Controller
                     $obj->delete();
                 }
             }
-        }       
+        }
         Session::flash('success-seo', 'Update đồng loạt thành công.');
         return redirect()->route('seo.index');
     }

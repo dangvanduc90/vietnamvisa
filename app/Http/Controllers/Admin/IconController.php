@@ -20,7 +20,7 @@ class IconController extends Controller
     {
         $objs = Icon::all();
         $pages = Page::where('status',1)->get();
-        return view('back-end.icon.list',['pages'=>$pages, 'data'=>$objs]);
+        return view('backend.icon.list',['pages'=>$pages, 'data'=>$objs]);
     }
 
     /**
@@ -31,7 +31,7 @@ class IconController extends Controller
     public function create()
     {
         $pages = Page::where('status',1)->get();
-        return view('back-end.icon.create',['pages'=>$pages]);
+        return view('backend.icon.create',['pages'=>$pages]);
     }
 
     /**
@@ -72,11 +72,11 @@ class IconController extends Controller
     {
         $obj = Icon::find($id);
         if($obj == null){
-            Session::flash('error-icon', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('icon.index');  
+            Session::flash('error-icon', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('icon.index');
         }
         $pages = Page::where('status',1)->get();
-        return view('back-end.icon.edit',['obj'=>$obj, 'pages'=>$pages]);
+        return view('backend.icon.edit',['obj'=>$obj, 'pages'=>$pages]);
     }
 
     /**
@@ -90,8 +90,8 @@ class IconController extends Controller
     {
         $obj = Icon::find($id);
         if($obj == null){
-            Session::flash('error-banner', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('icon.index');  
+            Session::flash('error-banner', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('icon.index');
         }
         $arr_data = $request->all();
         if(isset($arr_data['page']))
@@ -111,12 +111,12 @@ class IconController extends Controller
     {
         $obj = Icon::find($id);
         if($obj == null){
-            Session::flash('error-icon', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('icon.index');  
+            Session::flash('error-icon', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('icon.index');
         }
         $obj->delete();
-        Session::flash('success-icon', 'Xóa thông tin thành công.');  
-        return redirect()->route('icon.index');  
+        Session::flash('success-icon', 'Xóa thông tin thành công.');
+        return redirect()->route('icon.index');
     }
 
     public function mutileUpdate(Request $request)
@@ -144,7 +144,7 @@ class IconController extends Controller
                     $obj->delete();
                 }
             }
-        }       
+        }
         Session::flash('success-icon', 'Update đồng loạt thành công.');
         return redirect()->route('icon.index');
     }

@@ -20,7 +20,7 @@ class ProductController extends Controller
     public function index()
     {
         $objs = Post::join('categories', 'categories.id', '=', 'posts.cat_id')->where('categories.type2', 1)->select('posts.*')->get();
-        return view('back-end.product.list',['data'=>$objs]);
+        return view('backend.product.list',['data'=>$objs]);
     }
 
     /**
@@ -31,7 +31,7 @@ class ProductController extends Controller
     public function create()
     {
         $cat = Category::where('type2',1)->where('status',1)->orderby('name')->get();
-        return view('back-end.product.create',['cats'=>$cat]);
+        return view('backend.product.create',['cats'=>$cat]);
     }
 
     /**
@@ -73,11 +73,11 @@ class ProductController extends Controller
     {
         $obj = Post::find($id);
         if($obj == null){
-            Session::flash('error-product', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('product.index');  
+            Session::flash('error-product', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('product.index');
         }
         $cat = Category::where('type2',1)->where('status',1)->orderby('name')->get();
-        return view('back-end.product.edit',['obj'=>$obj,'cats'=>$cat]);
+        return view('backend.product.edit',['obj'=>$obj,'cats'=>$cat]);
 
     }
 
@@ -92,8 +92,8 @@ class ProductController extends Controller
     {
         $obj = Post::find($id);
         if($obj == null){
-            Session::flash('error-product', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('product.index');  
+            Session::flash('error-product', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('product.index');
         }
         $data = $request->all();
         $obj->update($request->all());
@@ -101,8 +101,8 @@ class ProductController extends Controller
         $data['obj_id'] = $obj->id;
         $seo = $obj->seo();
         if($seo != null) $seo->update($data);
-        else Seo::create($data); 
-        Session::flash('success-product', 'Cập nhật sản phẩm thành công.'); 
+        else Seo::create($data);
+        Session::flash('success-product', 'Cập nhật sản phẩm thành công.');
         return redirect()->route('product.edit',['id'=>$id]);
     }
 
@@ -116,14 +116,14 @@ class ProductController extends Controller
     {
         $obj = Post::find($id);
         if($obj == null){
-            Session::flash('error-product', 'Không tìm thấy dữ liệu.');  
-            return redirect()->route('product.index');  
+            Session::flash('error-product', 'Không tìm thấy dữ liệu.');
+            return redirect()->route('product.index');
         }
         $seo = $obj->seo();
         if($seo != null) $seo->delete();
         $obj->delete();
-        Session::flash('success-product', 'Xóa bài viết thành công.');  
-        return redirect()->route('product.index');  
+        Session::flash('success-product', 'Xóa bài viết thành công.');
+        return redirect()->route('product.index');
     }
 
     public function mutileUpdate(Request $request)
@@ -153,7 +153,7 @@ class ProductController extends Controller
                     $obj->delete();
                 }
             }
-        }       
+        }
         Session::flash('success-product', 'Update đồng loạt thành công.');
         return redirect()->route('product.index');
     }
