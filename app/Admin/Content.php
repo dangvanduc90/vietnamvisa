@@ -14,10 +14,10 @@ class Content extends Model
     {
         return $this->belongsTo('App\Admin\Section');
     }
-    
+
     public function user()
     {
-        return $this->belongsTo('App\User','created_by');
+        return $this->belongsTo('App\Models\User','created_by');
     }
 
     public function setImageAttribute($value) {

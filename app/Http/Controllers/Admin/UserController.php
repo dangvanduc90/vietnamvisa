@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest as UserRequest;
-use App\User;
+use App\Models\User;
 use Session;
 
 class UserController extends Controller

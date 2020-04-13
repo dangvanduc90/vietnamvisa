@@ -4,3 +4,4 @@
 <link href="{{asset('frontend/owl-carousel/owl.theme.css')}}" rel="stylesheet"/>
 <link href="{{asset('frontend/css/style.css')}}" rel="stylesheet"/>
 <link href="{{asset('frontend/css/responsive.css')}}" rel="stylesheet"/>
+<link href="{{asset('frontend/css/ducdv.css')}}" rel="stylesheet"/>

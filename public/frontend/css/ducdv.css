@@ -1,0 +1,10 @@
+.invalid-feedback {
+    font-size: 14px;
+    font-weight: normal;
+    color: red;
+    margin-left: 0;
+}
+
+.form-control.is-invalid~.invalid-feedback {
+    display: block;
+}

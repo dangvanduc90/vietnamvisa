@@ -55,12 +55,19 @@
             <div class="right_head">
                 <div class="top_head">
                     <div class="user">
+                        @guest
                         <a class="login hidden_mobile" href="#" data-toggle="modal" data-target="#showLogin">
                             <i class="fa fa-lock" aria-hidden="true"></i> Login </a>
                         <a class="register hidden_mobile" href="#" data-toggle="modal" data-target="#showRegister">
                             <i class="fa fa-plus" aria-hidden="true"></i> Sign up
                         </a>
-
+                        @else
+                        <a class="login hidden_mobile infomation" href="{{ route('profile') }}">
+                            <i class="fa fa-user" aria-hidden="true"></i>  Hi <span>{{ Auth::user()->email }}</span>
+                        </a>
+                        <span>|</span>
+                        <a href="{{ route('post.user.logout') }}" class="logout">Log out</a>
+                        @endguest
                         <a href="https://vietnamvisavoa.com/en/apply-online" class="btn_apply">Apply Online</a>
                     </div>
 

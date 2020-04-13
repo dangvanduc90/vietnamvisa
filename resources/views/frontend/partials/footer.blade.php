@@ -147,11 +147,23 @@
             <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 class="modal-title">Login</h3>
-                <form method="post" id="formLogin" class="form_member" novalidate="novalidate">
-                    <input type="text" name="email" placeholder="Email" class="form-control">
-                    <input type="password" name="password" placeholder="Password" class="form-control" autocomplete="current-password">
+                <form method="post" id="formLogin" class="form_member" novalidate="novalidate" action="{{ route('post.user.login') }}">
+                    @csrf
+                    <input type="text" name="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror">
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                    <input type="password" name="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror"
+                           autocomplete="current-password">
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                     <div class="inline">
-                        <p><input type="checkbox" name=""> Remember me</p>
+                        <p><input type="checkbox" name="remember"> Remember me</p>
                         <a href="#" id="modal-forgot" data-target="#showForgot" data-toggle="modal">Forgot Password
                             ?</a>
                     </div>
@@ -170,12 +182,45 @@
             <div class="modal-body">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 class="modal-title">Sign Up</h3>
-                <form method="post" id="formRegister" class="form_member" novalidate="novalidate">
-                    <input type="text" name="fullname" placeholder="Name" class="form-control">
-                    <input type="text" name="phone" placeholder="Phone" class="form-control">
-                    <input type="text" name="email" placeholder="Email" class="form-control">
-                    <input type="password" name="password" id="Password" placeholder="Password" class="form-control" autocomplete="new-password">
-                    <input type="password" name="configPass" placeholder="Confirm Password" class="form-control" autocomplete="new-password">
+                <form method="post" id="formRegister" class="form_member" novalidate="novalidate"
+                      action="{{ route('post.user.signup') }}">
+                    @csrf
+                    <input type="text" name="name" placeholder="Name"
+                           class="form-control @error('name') is-invalid @enderror">
+                    @error('name')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                    <input type="text" name="phone" placeholder="Phone"
+                           class="form-control @error('phone') is-invalid @enderror">
+                    @error('phone')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                    <input type="text" name="email" placeholder="Email"
+                           class="form-control @error('email') is-invalid @enderror">
+                    @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                    <input type="password" name="password" id="Password" placeholder="Password"
+                           class="form-control @error('password') is-invalid @enderror" autocomplete="new-password">
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                    <input type="password" name="password_confirmation" placeholder="Confirm Password"
+                           class="form-control @error('password_confirmation') is-invalid @enderror"
+                           autocomplete="new-password">
+                    @error('password_confirmation')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                     <div class="inline">
                         <p>Password must be at least 6 character, contain one alpha character and one numeric
                             character</p>

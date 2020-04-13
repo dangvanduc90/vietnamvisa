@@ -19,7 +19,7 @@ class Album extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User','created_by');
+        return $this->belongsTo('App\Models\User','created_by');
     }
 
     public function setImageAttribute($value) {
@@ -46,7 +46,7 @@ class Album extends Model
         $files = Storage::disk('album')->files($slug);
         return sizeof($files);
     }
-    
+
     public function getArrayTagAttribute() {
         $res = [];
         $tmp = $this->attributes['tags'];

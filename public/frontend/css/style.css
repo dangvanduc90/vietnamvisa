@@ -147,7 +147,7 @@ input, select { font-size: 15px !important; }
 	margin-right: 5px;
 	color: #fff;
 	font-size: 14px;
-	
+
 }
 
 .right_top{
@@ -320,7 +320,7 @@ ul.nav_menu li ul li a{
 	padding-left: 5px;
 	font-weight: 600;
 	padding-right: 5px;
-}	
+}
 ul.nav_menu li ul li a i{
 	margin-right: 6px;
 }
@@ -415,12 +415,12 @@ a.cd-top.cd-is-visible, a.cd-top.cd-fade-out, .no-touch a.cd-top:hover {
 -moz-transition: opacity .3s 0s, visibility 0s 0s;
 transition: opacity .3s 0s, visibility 0s 0s;
 }
- 
+
 a.cd-top, a.cd-top:visited, a.cd-top:hover {
 color: #CCCCCC;
 text-decoration: none;
 }
- 
+
 a.cd-top.cd-is-visible {
 /* the button becomes visible */
 visibility: visible;
@@ -452,7 +452,7 @@ opacity: 1;
 	border-top:1px solid #aaa;
 	margin-top: 30px;
 }
-.connect .title{	
+.connect .title{
 	text-align: center;
 	background-color: #333;
 	width: 100px;
@@ -483,7 +483,7 @@ opacity: 1;
 	font-size: 18px;
 }
 .connect .content_c a.icon_facebook:hover{
-	background-color:#0266e1; 
+	background-color:#0266e1;
 	border:1px solid #0266e1;
 }
 .connect .content_c a.icon_google:hover{
@@ -495,7 +495,7 @@ opacity: 1;
 	border:1px solid #12bcfb;
 }
 .connect .content_c a.icon_youtube:hover{
-	background-color:#f10000; 
+	background-color:#f10000;
 	border:1px solid #f10000;
 }
 .title_home{
@@ -551,7 +551,7 @@ opacity: 1;
 	background: transparent;
 	border: 1px solid #fff;
 }
-.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover, 
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover,
 .tab-news .nav-pills li.active {
 	background: #2db45f;
 	border-radius: 25px;
@@ -608,7 +608,7 @@ opacity: 1;
 }
 .tab-news p {
 	text-align: center;
-} 
+}
 .tab-news p .see-all {
 	display: block;
 	padding: 16px 0;
@@ -708,7 +708,7 @@ opacity: 1;
 }
 .xs-slider-news p {
 	text-align: center;
-} 
+}
 .m-news-item {
 	width: 100%;
 	float: left;
@@ -773,7 +773,7 @@ opacity: 1;
 	background-color: rgba(2,136,1,0.5);
 	width: 100%;
 	padding-top: 50px;
-	padding-bottom: 50px; 
+	padding-bottom: 50px;
 }
 .impressive .bg_green .item_i{
 	width: 25%;
@@ -812,7 +812,7 @@ opacity: 1;
 	width: 100%;
 	background-image:url('../img/bg_apply.jpg');
 	padding-top: 70px;
-	padding-bottom: 50px; 
+	padding-bottom: 50px;
 	background-position: center;
 	color:#fff;
 	background-size: 100%;
@@ -909,7 +909,7 @@ opacity: 1;
 }
 .btn_viewmore:hover{
 	color:#fff;
-	background-color: #148801; 
+	background-color: #148801;
 }
 .what_client_say .title_home{
 	width: 100%;
@@ -1794,23 +1794,23 @@ label.error{
 
 
 /********CSS Table fee ************/
-table { 
-	width: 100%; 
-	border-collapse: collapse; 
+table {
+	width: 100%;
+	border-collapse: collapse;
 }
 /* Zebra striping */
-tr:nth-of-type(odd) { 
-	background: #eee; 
+tr:nth-of-type(odd) {
+	background: #eee;
 }
-.content_detail th { 
-	background: #3598dc; 
-	color: white; 
-	font-weight: bold; 
+.content_detail th {
+	background: #3598dc;
+	color: white;
+	font-weight: bold;
 }
-td, th { 
-	padding: 6px; 
-	border: 1px solid #ccc; 
-	text-align: center; 
+td, th {
+	padding: 6px;
+	border: 1px solid #ccc;
+	text-align: center;
 }
 
 .table-note {
@@ -1818,12 +1818,12 @@ td, th {
 }
 .checkbtn {
 	color: #fff;
-	border: 0; 
+	border: 0;
 	background: #2386ca;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	margin-top: 20px;   
+	margin-top: 20px;
 	padding: 10px 35px;
 	font-size: 34px;
 	line-height: 1.33;
@@ -1847,7 +1847,7 @@ td, th {
 	.extra-services {
 		background: #4598cd;
 		font-weight: bold;
-		color: #fff;    
+		color: #fff;
 	}
 	.extra-services h4 {
 		font-weight: bold;
@@ -1872,7 +1872,7 @@ td, th {
 
 	@media only screen and (max-width: 760px),
 	(min-device-width: 768px) and (max-device-width: 1024px)  {
-		
+
 	/*
     table, thead, tbody, th, td, tr {
         display: block;
@@ -1882,7 +1882,7 @@ td, th {
         top: -9999px;
         left: -9999px;
     }
-    
+
     td {
         border: 1px solid #ccc;
         border-bottom: 1px solid #eee;
@@ -2728,7 +2728,7 @@ hr{
 }
 #checkStatus .form_member{
 	padding: 0px;
-} 
+}
 #checkStatus .close {
 	color: #ec1c23;
 	width: 20px;
@@ -2820,7 +2820,7 @@ hr{
 	background: #fff;
 	border-radius: 10px;
 	margin-bottom: 100px;
-	
+
 }
 .content_member form label{
 	width: 100%;
@@ -3277,7 +3277,7 @@ strong,b{
 .item_block_1 .left_block1 h4 span{
 	color:#ec1c23;
 	font-family: 'Montserrat-Bold';
-	font-size:43px; 
+	font-size:43px;
 	margin-left: 20px;
 }
 .item_block_1 .right_block2{
@@ -3306,7 +3306,7 @@ strong,b{
 .item_block_3 .right_block2 h4 span{
 	color:#ec1c23;
 	font-family: 'Montserrat-Bold';
-	font-size:43px; 
+	font-size:43px;
 	margin-right: 20px;
 }
 .item_block_3 .right_block2{
@@ -4087,7 +4087,7 @@ label.applicant_2{
 #showSuccess{
 	background-color: rgba(24,46,69,0.8);
 }
-.box_img_load_ajax{    
+.box_img_load_ajax{
 	background: none repeat scroll 0 0 #000;
 	bottom: 0;
 	left: 0;
@@ -4176,7 +4176,7 @@ label.applicant_2{
 	background-position-y: 120px;
 }
 .content_FQA{
-	text-align: center; 
+	text-align: center;
 }
 .content_FQA p{
 	margin-bottom: 10px;

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Controllers\User;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -29,7 +28,7 @@ class LoginController extends Controller
      * @var string
      */
 
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
     /**
      * Create a new controller instance.
      *
@@ -43,6 +42,11 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('frontend.auth.login');
+//        return view('frontend.auth.login');
+    }
+
+    public function guard()
+    {
+        return Auth::guard('web');
     }
 }
