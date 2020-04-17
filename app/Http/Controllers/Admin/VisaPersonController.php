@@ -29,8 +29,9 @@ class VisaPersonController extends Controller
      */
     public function create()
     {
-        $monthFee = VisaMonth::all();
-        return view('backend.visa-person.create', compact('monthFee'));
+        $visaMonth = VisaMonth::all();
+        $visaPurpose = VisaPurpose::all();
+        return view('backend.visa-person.create', compact('visaMonth', 'visaPurpose'));
     }
 
     /**
@@ -42,9 +43,11 @@ class VisaPersonController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'month_text' => 'required|max:255',
-            'month_number' => 'required|integer|min:0|max:127',
-            'purpose_id' => 'required|integer|min:0',
+            'person_text' => 'required|max:255',
+            'person_number' => 'required|numeric',
+            'person_fee' => 'required|integer|min:0',
+            'month_id' => 'required|integer|min:0',
+            'urgent_id' => 'required|integer|min:0',
         ]);
 
         VisaPerson::create($request->all());
@@ -61,8 +64,9 @@ class VisaPersonController extends Controller
     public function edit($id)
     {
         $obj = VisaPerson::findOrFail($id);
-        $purposes = VisaPurpose::all();
-        return view('backend.visa-person.edit', compact('obj', 'purposes'));
+        $visaMonth = VisaMonth::all();
+        $visaPurpose = VisaPurpose::all();
+        return view('backend.visa-person.edit', compact('obj', 'visaMonth', 'visaPurpose'));
     }
 
     /**
@@ -74,6 +78,13 @@ class VisaPersonController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'person_text' => 'required|max:255',
+            'person_number' => 'required|numeric',
+            'person_fee' => 'required|integer|min:0',
+            'month_id' => 'required|integer|min:0',
+            'urgent_id' => 'required|integer|min:0',
+        ]);
         $obj = VisaPerson::findOrFail($id);
         $obj->update($request->all());
         Session::flash('success-visa.person', 'Cập nhật thành công.');

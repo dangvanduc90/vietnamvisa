@@ -1,11 +1,22 @@
 <div class="main-post col-md-8">
-    <div class="form-group lb-slug {{ $errors->has('price') ? 'has-error' : '' }}">
+    <div class="form-group lb-slug {{ $errors->has('month_id') ? 'has-error' : '' }}">
         <label class="control-label">Purpose(*)</label>
         <div class="inner">
             <select class="form-control m-b" name="month_id" id="month_id" required>
                 <option label=""></option>
-                @foreach($monthFee as $p)
+                @foreach($visaMonth as $p)
                     <option value="{{$p->id}}" {{(isset($obj) ? $obj->month_id : old('month_id')) == $p->id ? "selected" : ""}}>{{$p->month_text}}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+    <div class="form-group lb-slug {{ $errors->has('urgent_id') ? 'has-error' : '' }}">
+        <label class="control-label">Purpose(*)</label>
+        <div class="inner">
+            <select class="form-control m-b" name="urgent_id" id="urgent_id" required>
+                <option label=""></option>
+                @foreach($visaPurpose as $p)
+                    <option value="{{$p->id}}" {{(isset($obj) ? $obj->urgent_id : old('urgent_id')) == $p->id ? "selected" : ""}}>{{$p->type}}</option>
                 @endforeach
             </select>
         </div>

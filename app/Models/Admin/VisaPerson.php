@@ -23,4 +23,9 @@ class VisaPerson extends Model
     {
         return $this->hasOne('App\Models\Admin\VisaMonth', 'id', 'month_id')->withDefault();
     }
+
+    public function urgent()
+    {
+        return $this->hasOne('App\Models\Admin\VisaPurpose', 'id', 'urgent_id')->withDefault();
+    }
 }

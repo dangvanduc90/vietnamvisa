@@ -24,7 +24,7 @@
                         @include('backend.partials.alert-msg')
                         @include('backend.partials.select-box-update')
                         <div class="table-responsive">
-                            @include('backend.partials.tables.table-product')
+                            @include('backend.partials.tables.table-visa-person')
                         </div>
                     </div>
                 </div>
