@@ -107,6 +107,21 @@ Route::namespace('Admin')->group(function () {
         //Slug
         Route::get('/create-slug', 'HomeController@createSlug')
             ->name('create-slug');
+
+        Route::prefix('visa')->group(function () {
+            Route::resource('person', 'VisaPersonController');
+            Route::post('/mutile-update/person', 'VisaPersonController@mutileUpdate')
+                ->name('mutileUpdate.person');
+
+            Route::resource('month', 'VisaMonthController');
+            Route::post('/mutile-update/month', 'VisaMonthController@mutileUpdate')
+                ->name('mutileUpdate.month');
+
+            Route::resource('purpose', 'VisaPurposeController');
+            Route::post('/mutile-update/purpose', 'VisaPurposeController@mutileUpdate')
+                ->name('mutileUpdate.purpose');
+        });
+
     });
 
 });

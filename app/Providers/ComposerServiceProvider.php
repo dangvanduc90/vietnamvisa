@@ -328,6 +328,48 @@ class ComposerServiceProvider extends ServiceProvider
         //END ALBUM
 
 
+        //START VISA PURPOSE
+        View::composer('backend.visa-purpose.*', function ($view) {
+            $view->with(['flag'=>'visa.purpose','page_name'=>'VISA PURPOSE', 'name_session'=>'visa.purpose']);
+        });
+        View::composer(['backend.visa-purpose.create', 'backend.visa-purpose.edit'], function ($view) {
+            $view->with(['parent_menu'=>'Danh sách - VISA PURPOSE', 'parent_route'=>route('purpose.index')]);
+        });
+        View::composer(['backend.visa-purpose.list', 'backend.visa-purpose.edit'], function ($view) {
+            $view->with(['name_button'=> 'Thêm mới',
+                'route_button'=>route('purpose.create'),
+                'route_update'=>route('mutileUpdate.purpose')]);
+        });
+        //END VISA PURPOSE
+
+        //START VISA MONTH
+        View::composer('backend.visa-month.*', function ($view) {
+            $view->with(['flag'=>'visa.month','page_name'=>'VISA MONTH', 'name_session'=>'visa.month']);
+        });
+        View::composer(['backend.visa-month.create', 'backend.visa-month.edit'], function ($view) {
+            $view->with(['parent_menu'=>'Danh sách - VISA MONTH', 'parent_route'=>route('month.index')]);
+        });
+        View::composer(['backend.visa-month.list', 'backend.visa-month.edit'], function ($view) {
+            $view->with(['name_button'=> 'Thêm mới',
+                'route_button'=>route('month.create'),
+                'route_update'=>route('mutileUpdate.month')]);
+        });
+        //END VISA MONTH
+
+        //START VISA PERSON
+        View::composer('backend.visa-person.*', function ($view) {
+            $view->with(['flag'=>'visa.person','page_name'=>'VISA PERSON', 'name_session'=>'visa.person']);
+        });
+        View::composer(['backend.visa-person.create', 'backend.visa-person.edit'], function ($view) {
+            $view->with(['parent_menu'=>'Danh sách - VISA PERSON', 'parent_route'=>route('person.index')]);
+        });
+        View::composer(['backend.visa-person.list', 'backend.visa-person.edit'], function ($view) {
+            $view->with(['name_button'=> 'Thêm mới',
+                'route_button'=>route('person.create'),
+                'route_update'=>route('mutileUpdate.person')]);
+        });
+        //END VISA PERSON
+
         // View::composer(
         //     'partials.navigation', 'App\Http\ViewComposers\NavigationViewComposer'
         // );

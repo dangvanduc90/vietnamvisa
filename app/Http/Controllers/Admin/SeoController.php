@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\SeoRequest as SeoRequest;
+use App\Http\Requests\SeoRequest;
 use App\Admin\Seo;
 use Session;
 

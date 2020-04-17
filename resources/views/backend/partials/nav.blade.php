@@ -32,6 +32,15 @@
                     <li class={{$flag == "product"  ? "active" : ""}}><a href="{{route('product.index')}}">Sản phẩm</a></li>
                 </ul>
             </li>
+
+            <li class={{in_array($flag, ['visa.purpose', 'visa.month', 'visa.person']) ? "active" : ""}}>
+                <a href="#"><i class="fa fa-star"></i> <span class="nav-label">Visa</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li class={{$flag == "visa.purpose"  ? "active" : ""}}><a href="{{route('purpose.index')}}">Danh mục purpose</a></li>
+                    <li class={{$flag == "visa.month"  ? "active" : ""}}><a href="{{route('month.index')}}">Danh mục month</a></li>
+                    <li class={{$flag == "visa.person"  ? "active" : ""}}><a href="{{route('person.index')}}">Danh mục person</a></li>
+                </ul>
+            </li>
         </ul>
     </div>
 </nav>
