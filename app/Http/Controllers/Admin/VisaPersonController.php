@@ -47,7 +47,6 @@ class VisaPersonController extends Controller
             'person_number' => 'required|numeric',
             'person_fee' => 'required|integer|min:0',
             'month_id' => 'required|integer|min:0',
-            'urgent_id' => 'required|integer|min:0',
         ]);
 
         VisaPerson::create($request->all());
@@ -83,7 +82,6 @@ class VisaPersonController extends Controller
             'person_number' => 'required|numeric',
             'person_fee' => 'required|integer|min:0',
             'month_id' => 'required|integer|min:0',
-            'urgent_id' => 'required|integer|min:0',
         ]);
         $obj = VisaPerson::findOrFail($id);
         $obj->update($request->all());
