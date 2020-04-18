@@ -25,7 +25,7 @@
 			<input type="text" class="form-control" name="price" id="price" value="{{isset($obj) ? $obj->price : old('price')}}" required>
 		</div>
 	</div>
-	<div class="form-group lb-slug {{ $errors->has('price') ? 'has-error' : '' }}">
+	<div class="form-group lb-slug {{ $errors->has('sosao') ? 'has-error' : '' }}">
 		<label class="control-label">Đánh giá</label>
 		<div class="inner">
 			<select class="form-control" name="sosao">

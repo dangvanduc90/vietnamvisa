@@ -120,6 +120,14 @@ Route::namespace('Admin')->group(function () {
             Route::resource('purpose', 'VisaPurposeController');
             Route::post('/mutile-update/purpose', 'VisaPurposeController@mutileUpdate')
                 ->name('mutileUpdate.purpose');
+
+            Route::resource('urgent', 'UrgentController');
+            Route::post('/mutile-update/urgent', 'UrgentController@mutileUpdate')
+                ->name('mutileUpdate.urgent');
+
+            Route::resource('stamping', 'StampingController');
+            Route::post('/mutile-update/stamping', 'StampingController@mutileUpdate')
+                ->name('mutileUpdate.stamping');
         });
 
     });

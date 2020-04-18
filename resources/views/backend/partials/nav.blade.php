@@ -33,12 +33,14 @@
                 </ul>
             </li>
 
-            <li class={{in_array($flag, ['visa.purpose', 'visa.month', 'visa.person']) ? "active" : ""}}>
+            <li class={{in_array($flag, ['visa.purpose', 'visa.month', 'visa.person', 'visa.urgent', 'visa.stamping']) ? "active" : ""}}>
                 <a href="#"><i class="fa fa-star"></i> <span class="nav-label">Visa</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
                     <li class={{$flag == "visa.purpose"  ? "active" : ""}}><a href="{{route('purpose.index')}}">Danh mục purpose</a></li>
                     <li class={{$flag == "visa.month"  ? "active" : ""}}><a href="{{route('month.index')}}">Danh mục month</a></li>
                     <li class={{$flag == "visa.person"  ? "active" : ""}}><a href="{{route('person.index')}}">Danh mục person</a></li>
+                    <li class={{$flag == "visa.urgent"  ? "active" : ""}}><a href="{{route('urgent.index')}}">Danh mục urgent</a></li>
+                    <li class={{$flag == "visa.stamping"  ? "active" : ""}}><a href="{{route('stamping.index')}}">Danh mục stamping</a></li>
                 </ul>
             </li>
         </ul>

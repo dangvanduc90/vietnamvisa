@@ -370,6 +370,34 @@ class ComposerServiceProvider extends ServiceProvider
         });
         //END VISA PERSON
 
+        //START VISA URGENT
+        View::composer('backend.visa-urgent.*', function ($view) {
+            $view->with(['flag'=>'visa.urgent','page_name'=>'VISA URGENT', 'name_session'=>'visa.urgent']);
+        });
+        View::composer(['backend.visa-urgent.create', 'backend.visa-urgent.edit'], function ($view) {
+            $view->with(['parent_menu'=>'Danh sách - VISA URGENT', 'parent_route'=>route('urgent.index')]);
+        });
+        View::composer(['backend.visa-urgent.list', 'backend.visa-urgent.edit'], function ($view) {
+            $view->with(['name_button'=> 'Thêm mới',
+                'route_button'=>route('urgent.create'),
+                'route_update'=>route('mutileUpdate.urgent')]);
+        });
+        //END VISA URGENT
+
+        //START VISA STAMPING
+        View::composer('backend.visa-stamping.*', function ($view) {
+            $view->with(['flag'=>'visa.stamping','page_name'=>'VISA STAMPING', 'name_session'=>'visa.stamping']);
+        });
+        View::composer(['backend.visa-stamping.create', 'backend.visa-stamping.edit'], function ($view) {
+            $view->with(['parent_menu'=>'Danh sách - VISA STAMPING', 'parent_route'=>route('stamping.index')]);
+        });
+        View::composer(['backend.visa-stamping.list', 'backend.visa-stamping.edit'], function ($view) {
+            $view->with(['name_button'=> 'Thêm mới',
+                'route_button'=>route('stamping.create'),
+                'route_update'=>route('mutileUpdate.stamping')]);
+        });
+        //END VISA STAMPING
+
         // View::composer(
         //     'partials.navigation', 'App\Http\ViewComposers\NavigationViewComposer'
         // );

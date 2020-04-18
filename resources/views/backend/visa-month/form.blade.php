@@ -14,7 +14,7 @@
                    value="{{isset($obj) ? $obj->month_number : old('month_number')}}" placeholder="Month number, write in number" min="0" max="127" required>
         </div>
     </div>
-    <div class="form-group lb-slug {{ $errors->has('price') ? 'has-error' : '' }}">
+    <div class="form-group lb-slug {{ $errors->has('purpose_id') ? 'has-error' : '' }}">
         <label class="control-label">Purpose(*)</label>
         <div class="inner">
             <select class="form-control m-b" name="purpose_id" id="purpose_id" required>
